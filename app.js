@@ -1,4 +1,3 @@
-var path = require("path");
 var express = require("express");
 var config = require("config");
 var bodyParser = require("body-parser");
