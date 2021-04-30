@@ -1,0 +1,66 @@
+<%+ extend('layout/game') %>
+<%+ section('aboveContent') %>
+<h3 class="text-center my-2">Setup the board</h3>
+<%+ endSection %>
+<%+ section('belowContent') %>
+<p class="w-100 text-center mt-4">
+  <a id="switch" class="w-25 btn btn-dark btn-lg"><i class="fad fa-chess-board"></i> Switch side</a>
+  <a id="undo" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Undo</a>
+</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha512-OqcrADJLG261FZjar4Z6c4CfLqd861A3yPNMb+vRQ2JwzFT49WT4lozrh3bcKxHxtDTgNiqgYbEUStzvZQRfgQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha256-u/J1Urdrk3nCYFefpoeTMgI5viU1ujCDu2fXXoSJjhg=" crossorigin="anonymous"></script>
+<script>
+<% if (board != '') { %>
+let history = ['{{ $board }}'];
+<% } else { %>
+let history = ['8/8/8/8/8/8/8/8'];
+<% } %>
+function onSnapEnd () {
+  if (board.fen() != history[history.length - 1]){
+    history.push(board.fen());
+    nuocCo.play();
+  }
+  console.log(history);
+}
+function undo () {
+  if (history.length > 1) {
+    history.pop();
+    board.position(history[history.length - 1]);
+  }
+  console.log(history);
+}
+const board = Chessboard('chess-board', {
+  draggable: true,
+  dropOffBoard: 'trash',
+  sparePieces: true,
+  <% if (board != '') { %>
+  position: '<%= board %>',
+  <% } %>
+  showNotation: true,
+  onSnapEnd: onSnapEnd
+});
+$('#switch').on('click', board.flip);
+$('#undo').on('click', undo);
+$("#capture").on('click', function() {
+  html2canvas(document.getElementsByClassName("board-b72b1")[0], {
+    windowWidth: document.getElementsByClassName("board-b72b1")[0].scrollWidth,
+    windowHeight: document.getElementsByClassName("board-b72b1")[0].scrollHeight,
+    onrendered: function(canvas) {
+      var context = canvas.getContext('2d');
+
+      // Draw the Watermark
+      context.font = '25px monospace';
+      context.globalCompositeOperation = 'lighter';
+      context.fillStyle = '#424242';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText('CHESSROOM.TOP', canvas.width / 2, canvas.height / 2);
+
+      canvas.toBlob(function(blob) {
+        saveAs(blob, "board-<%= Date.now() %>.png"); 
+      });
+    }
+  });
+});
+</script>
+<%+ endSection %>

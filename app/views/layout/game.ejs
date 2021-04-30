@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') -%>
+  </head>
+  <body class="<%= bodyClass %>">
+    <%- include('./partials/header') -%>
+    <main>
+      <div class="container-fluid game px-0" itemscope itemtype="http://schema.org/Game">
+        <div class="container p-3">
+          <audio id="nuoc-co">
+            <source src="/public/sound/nuocCo.mp3" type="audio/mpeg">
+            <source src="/public/sound/nuocCo.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="het-tran">
+            <source src="/public/sound/hetTran.mp3" type="audio/mpeg">
+            <source src="/public/sound/hetTran.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <% if (fullUrl == 'https://chessviet.com/set-up') { %>
+          <p class="w-100 text-center">
+            <a id="capture" class="btn btn-dark btn-lg" href="javascript:void(0);"><i class="fal fa-camera"></i> Capture the board</a>
+          </p>
+          <% } %>
+          <div id="chess-board" class="w-50 mx-auto"></div>
+          <p class="w-100 text-center my-3">
+            <span class="d-inline-block rounded" id="game-status"></span>
+          </p>
+          <p class="w-100 text-center mt-2">
+            <span class="rounded d-none" id="game-over" data-toggle="tooltip" data-placement="top" data-original-title="Press 'Host a Room' to play with real person"><i class="fad fa-flag-checkered"></i> GAME OVER</span>
+          </p>
+          <%+ yield('aboveContent') %>
+          <div class="row">
+            <input type="hidden" name="FEN" id="FEN" />
+            <input type="hidden" name="piecesUrl" id="piecesUrl" value="" />
+            <%- include('./partials/scripts') -%>
+            <%+ yield('belowContent') %>
+          </div>
+        </div>
+      </div>
+      <%- include('./partials/rules') -%>
+      <%- include('./partials/adsense') -%>
+    </main>
+    <%- include('./partials/footer') -%>
+  </body>
+</html>
