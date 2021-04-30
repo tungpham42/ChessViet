@@ -98,27 +98,11 @@ function adBlockDetected() {
 $('#AdSenseModal').on('hide.bs.modal', function(e) {
   window.location.href = $('#create-room').attr('data-url');
 })
-// Recommended audit because AdBlock lock the file 'blockadblock.js' 
-// If the file is not called, the variable does not exist 'blockAdBlock'
-// This means that AdBlock is present
-if(typeof  FuckAdBlock === 'undefined') {
-  // If it does not exist, it means that AdBlock blocking the script FuckAdBlock
-  // Therefore the function "adBlockDetected" is executed
-  // PS: The function is executed on the "document ready" in order to select the HTML with jQuery
-  $(document).ready(adBlockDetected);
-} else {
-  // Otherwise, our functions we add to FuckAdBlock for a classic detection
-  fuckAdBlock.on(true, adBlockDetected).on(false, adBlockUndetected);
-}
-
-// Change the options
-//blockAdBlock.setOption('checkOnLoad', false);
-// and|or
-//blockAdBlock.setOption({
-//  debug: true,
-//  checkOnLoad: false,
-//  resetOnEnd: false
-//});
+justDetectAdblock.detectAnyAdblocker().then(function(detected) {
+  if(detected){
+    adBlockDetected();
+  }
+});
 </script>
 <a href="#0" class="cd-top js-cd-top rounded" style="background-image: url('/public/img/cd-top-arrow.svg');">Top</a>
 <script src="/public/js/to-top.js"></script>
