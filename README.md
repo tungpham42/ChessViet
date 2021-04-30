@@ -1,3 +1,4 @@
 # ChessViet
 
-### Production URLs are: https://chessviet.com
+### Production URL is: https://chessviet.com
+### Our License is MIT
