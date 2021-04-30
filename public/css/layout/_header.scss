@@ -124,12 +124,12 @@ header.site-header {
     padding: 37px;
     z-index: 3;
     &.open {
-      background-image: url(/img/ic-menu-open-chess.svg);
+      background-image: url(/public/img/ic-menu-open-chess.svg);
       width: 20px;
       height: 12px;
     }
     &.close {
-      background-image: url(/img/ic-menu-close-chess.svg);
+      background-image: url(/public/img/ic-menu-close-chess.svg);
       width: 20px;
       height: 15px;
     }
