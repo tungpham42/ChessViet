@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://chessviet.com/public/sitemap.xml
