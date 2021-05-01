@@ -37,6 +37,15 @@ header.site-header {
     -ms-filter: blur(13px);
     filter: blur(13px);
     background-color: inherit;
+  }  
+  ul.navbar-nav {
+    &:hover {
+      a {
+        &:before, &::before {
+          opacity: 0;
+        }
+      }
+    }
   }
   a {
     color: black;
@@ -62,7 +71,7 @@ header.site-header {
         &:before, &::before {
           -webkit-transform: translateY(18px);
           transform: translateY(18px);
-          opacity: 1;
+          opacity: 1 !important;
         }
       }
     }
