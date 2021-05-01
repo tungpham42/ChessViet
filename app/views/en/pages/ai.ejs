@@ -1,24 +1,24 @@
-<%+ extend('layout/game') %>
+<%+ extend('en/layout/game') %>
 <%+ section('aboveContent') %>
-<h3 class="text-center my-2">Đang chơi với máy</h3>
-<h4 class="text-center my-2">Cấp độ: <%= levelTxt %></h4>
+<h3 class="text-center my-2">Playing with AI</h3>
+<h4 class="text-center my-2">Level: <%= levelTxt %></h4>
 <div class="dropup mx-auto text-center">
   <button class="btn btn-lg btn-dark dropdown-toggle" type="button" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fal fa-trophy"></i> Chọn cấp độ
+    <i class="fal fa-trophy"></i> Choose level
   </button>
   <div class="dropdown-menu" aria-labelledby="levelDropdown">
-    <a class="dropdown-item" href="/moi-choi">Mới chơi</a>
-    <a class="dropdown-item" href="/de">Dễ</a>
-    <a class="dropdown-item" href="/binh-thuong">Bình thường</a>
-    <a class="dropdown-item" href="/kho">Khó</a>
-    <a class="dropdown-item" href="/cao-thu">Cao thủ</a>
+    <a class="dropdown-item" href="/newbie">Newbie</a>
+    <a class="dropdown-item" href="/easy">Easy</a>
+    <a class="dropdown-item" href="/normal">Normal</a>
+    <a class="dropdown-item" href="/hard">Hard</a>
+    <a class="dropdown-item" href="/insane">Insane</a>
   </div>
 </div>
 <%+ endSection %>
 <%+ section('belowContent') %>
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="/choi-voi-nhau"><i class="fad fa-user"></i> Chơi với nhau</a>
-  <a id="reset" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Chơi lại</a>
+  <a class="w-25 btn btn-dark btn-lg" href="/play-with-friend"><i class="fad fa-user"></i> Play with friend</a>
+  <a id="reset" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Restart</a>
 </p>
 <script>
 var board = null
@@ -293,35 +293,37 @@ function onSnapEnd () {
 function updateStatus () {
   var status = ''
 
-  var moveColor = 'Trắng'
+  var moveColor = 'White'
   if (game.turn() === 'b') {
-    moveColor = 'Đen'
+    moveColor = 'Black'
   }
 
   // checkmate?
   if (game.in_checkmate()) {
-    status = moveColor + ' bị chiếu bí'
+    status = moveColor + ' is in checkmate'
   }
 
   // draw?
   else if (game.in_draw()) {
-    status = 'Hòa'
+    status = 'Drawn position'
   }
 
   // game still on
   else {
-    status = 'Tới lượt ' + moveColor + ' đi'
+    status = moveColor + "'s turn to move"
 
     // check?
     if (game.in_check()) {
-      status += ', ' + moveColor + ' đang bị chiếu'
+      status += ', ' + moveColor + ' is in check'
     }
   }
 
   $('#game-status').html(status);
   $('#header-status').html(': '+status);
   if (game.game_over()) {
-    $('#header-status').html(': '+status+' - Hết trận');
+    hetTran.play();
+    $('#header-status').html(': '+status+' - Game over');
+    $('#game-over').removeClass('d-none').addClass('d-inline-block');
   }
 }
 

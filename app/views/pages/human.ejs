@@ -1,11 +1,11 @@
 <%+ extend('layout/game') %>
 <%+ section('aboveContent') %>
-<h3 class="text-center my-2">Playing with friend</h3>
+<h3 class="text-center my-2">Chơi với nhau</h3>
 <%+ endSection %>
 <%+ section('belowContent') %>
 <p class="w-100 text-center mt-4">
-  <a class="w-25 btn btn-dark btn-lg" href="/"><i class="fad fa-desktop"></i> Play with AI</a>
-  <a id="reset" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Restart</a>
+  <a class="w-25 btn btn-dark btn-lg" href="/"><i class="fad fa-desktop"></i> Chơi với máy</a>
+  <a id="reset" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Chơi lại</a>
 </p>
 <script>
 let board = null;
@@ -91,35 +91,35 @@ function onSnapEnd () {
 function updateStatus () {
   var status = ''
 
-  var moveColor = 'White'
+  var moveColor = 'Trắng'
   if (game.turn() === 'b') {
-    moveColor = 'Black'
+    moveColor = 'Đen'
   }
 
   // checkmate?
   if (game.in_checkmate()) {
-    status = moveColor + ' is in checkmate'
+    status = moveColor + ' bị chiếu bí'
   }
 
   // draw?
   else if (game.in_draw()) {
-    status = 'Drawn position'
+    status = 'Hòa'
   }
 
   // game still on
   else {
-    status = moveColor + "'s turn to move"
+    status = 'Tới lượt ' + moveColor + ' đi'
 
     // check?
     if (game.in_check()) {
-      status += ', ' + moveColor + ' is in check'
+      status += ', ' + moveColor + ' đang bị chiếu'
     }
   }
 
   $('#game-status').html(status);
   $('#header-status').html(': '+status);
   if (game.game_over()) {
-    $('#header-status').html(': '+status+' - Game over');
+    $('#header-status').html(': '+status+' - Hết trận');
   }
 }
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') -%>
+  </head>
+  <body class="<%= bodyClass %>">
+    <%- include('./partials/header') -%>
+    <main>
+      <%+ yield('aboveContent') %>
+      <%- include('./partials/scripts') -%>
+      <%+ yield('belowContent') %>
+      <%- include('./partials/adsense') -%>
+    </main>
+    <%- include('./partials/footer') -%>
+  </body>
+</html>
