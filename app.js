@@ -1,9 +1,7 @@
 var express = require("express");
 var config = require("config");
 var bodyParser = require("body-parser");
-var partials = require("express-partials");
 var engine = require("ejs-layout");
-var md5 = require("md5");
 
 var socketio = require("socket.io");
 
@@ -17,8 +15,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("views", __dirname + "/app/views");
 app.set("view engine", "ejs");
 app.engine("ejs", engine.__express);
-
-app.use(partials());
 
 // Static folder
 // app.use("/static", express.static("/public"));
