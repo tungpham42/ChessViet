@@ -9,10 +9,18 @@
 </p>
 <script>
 let board = null;
+let $board = $('#chess-board');
 let game = new Chess();
 
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
+var squareToHighlight = null
+var colorToHighlight = null
+var squareClass = 'square-55d63'
+
+function removeHighlights (color) {
+  $board.find('.' + squareClass).removeClass('highlight-' + color);
+}
 
 function removeGreySquares () {
   $('#chess-board .square-55d63').css('background', '')
@@ -52,6 +60,21 @@ function onDrop (source, target) {
 
   // illegal move
   if (move === null) return 'snapback';
+
+  if (move.color === 'w') {
+    removeHighlights('white');
+    $board.find('.square-' + source).addClass('highlight-white');
+    $board.find('.square-' + target).addClass('highlight-white');
+    squareToHighlight = target;
+    colorToHighlight = 'white';
+  } else {
+    removeHighlights('black');
+    $board.find('.square-' + source).addClass('highlight-black');
+    $board.find('.square-' + target).addClass('highlight-black');
+    squareToHighlight = target;
+    colorToHighlight = 'black';
+  }
+
   updateStatus()
 }
 
@@ -86,6 +109,10 @@ function onSnapEnd () {
     hetTran.play();
     $('#game-over').removeClass('d-none').addClass('d-inline-block');
   }
+}
+
+function onMoveEnd () {
+  $board.find('.square-' + squareToHighlight).addClass('highlight-' + colorToHighlight);
 }
 
 function updateStatus () {
@@ -131,7 +158,8 @@ let config = {
   onMouseoutSquare: onMouseoutSquare,
   onMouseoverSquare: onMouseoverSquare,
   onSnapEnd: onSnapEnd,
-  showNotation: false
+  showNotation: false,
+  onMoveEnd: onMoveEnd
   //pieceTheme: '/public/img/xiangqipieces/traditional/{piece}.svg'
 };
 board = Chessboard('chess-board', config)
