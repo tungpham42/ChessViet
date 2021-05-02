@@ -19,11 +19,11 @@
     "express-session": "^1.17.1",
     "md5": "^2.3.0",
     "mysql": "^2.18.1",
+    "path": "^0.12.7",
     "q": "^1.5.1",
     "socket.io": "^4.0.1"
   },
   "directories": {
     "test": "test"
-  },
-  "devDependencies": {}
+  }
 }
