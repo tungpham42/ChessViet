@@ -17,8 +17,23 @@
 <%+ section('belowContent') %>
 <p class="w-100 text-center mt-4">
   <a id="switch" class="w-25 btn btn-dark btn-lg"><i class="fad fa-chess-board"></i> Switch side</a>
-  <a id="reset" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Restart</a>
+  <a id="reset" class="w-25 btn btn-light btn-lg text-dark"><i class="fad fa-redo-alt"></i> Restart</a>
 </p>
+<p class="w-100 text-center mt-2">
+  <i class="fad fa-external-link-alt"></i> Inviting friend to play by sending the link.
+</p>
+<div id="copy-url-black" class="input-group mb-2 w-50 mx-auto" data-toggle="tooltip" data-placement="bottom" data-original-title="Click to copy">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="url-addon-black"><i class="fal fa-copy"></i></span>
+  </div>
+  <input type="text" class="form-control" id="url-black" value="<%= fullUrl %>">
+</div>
+<script>
+$('#copy-url-black').on('click', function() {
+  copyToClipboard('#url-black');
+  selectText('#url-black')
+});
+</script>
 <script>
 let board = null;
 let game = new Chess();

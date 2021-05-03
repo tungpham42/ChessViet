@@ -4,14 +4,31 @@
 <%+ endSection %>
 <%+ section('belowContent') %>
 <p class="w-100 text-center mt-4">
-  <a id="switch" class="w-25 btn btn-dark btn-lg"><i class="fad fa-chess-board"></i> Switch side</a>
-  <a id="undo" class="w-25 btn btn-light btn-lg"><i class="fad fa-redo-alt"></i> Undo</a>
+  <a id="new-board" class="w-25 btn btn-dark btn-lg"><i class="fad fa-save"></i> Save board</a>
+  <a id="undo" class="w-25 btn btn-light btn-lg text-dark"><i class="fad fa-redo-alt"></i> Undo</a>
 </p>
+<% if (board != '') { %>
+<p class="w-100 text-center mt-2">
+  <i class="fad fa-external-link-alt"></i> Inviting friend to play by sending the link.
+</p>
+<div id="copy-url-black" class="input-group mb-2 w-50 mx-auto" data-toggle="tooltip" data-placement="bottom" data-original-title="Click to copy">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="url-addon-black"><i class="fal fa-copy"></i></span>
+  </div>
+  <input type="text" class="form-control" id="url-black" value="<%= fullUrl %>">
+</div>
+<script>
+$('#copy-url-black').on('click', function() {
+  copyToClipboard('#url-black');
+  selectText('#url-black')
+});
+</script>
+<% } %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha512-OqcrADJLG261FZjar4Z6c4CfLqd861A3yPNMb+vRQ2JwzFT49WT4lozrh3bcKxHxtDTgNiqgYbEUStzvZQRfgQ==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha256-u/J1Urdrk3nCYFefpoeTMgI5viU1ujCDu2fXXoSJjhg=" crossorigin="anonymous"></script>
 <script>
 <% if (board != '') { %>
-let history = ['{{ $board }}'];
+let history = ['<%= board %>'];
 <% } else { %>
 let history = ['8/8/8/8/8/8/8/8'];
 <% } %>
@@ -39,7 +56,9 @@ const board = Chessboard('chess-board', {
   showNotation: true,
   onSnapEnd: onSnapEnd
 });
-$('#switch').on('click', board.flip);
+$('#new-board').on('click', function(){
+  window.location.href = "/set-up/" + board.fen();
+});
 $('#undo').on('click', undo);
 $("#capture").on('click', function() {
   html2canvas(document.getElementsByClassName("board-b72b1")[0], {

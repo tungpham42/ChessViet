@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <%- include('./partials/head') -%>
   </head>
@@ -36,6 +36,30 @@
             <input type="hidden" name="piecesUrl" id="piecesUrl" value="" />
             <%- include('./partials/scripts') -%>
             <%+ yield('belowContent') %>
+            <% if (board == '') { %>
+            <p class="w-100 text-center mt-2">
+              <a id="share-board" class="text-dark mx-auto btn btn-light btn-lg py-2" href="/ban-co/"><i class="fad fa-share"></i> Chia sẻ bàn cờ</a>
+            </p>
+            <script>
+            $('#share-board').on('click', function(){
+              $(this).attr('href', $(this).attr('href') + game.fen());
+            });
+            </script>
+            <% } else { %>
+            <h3 class="mx-auto text-center my-2 d-block w-100">Ai đi trước?</h3>
+            <p class="w-100 text-center mt-2">
+              <a id="white-first" class="w-25 btn btn-light btn-lg text-dark" href="/ban-co/"><i class="fad fa-chess-clock-alt"></i> Trắng</a>
+              <a id="black-first" class="w-25 btn btn-dark btn-lg" href="/ban-co/"><i class="fad fa-chess-clock"></i> Đen</a>
+            </p>
+            <script>
+            $('#white-first').on('click', function(){
+              $(this).attr('href', $(this).attr('href') + board.fen() + ' w - - 0 1');
+            });
+            $('#black-first').on('click', function(){
+              $(this).attr('href', $(this).attr('href') + board.fen() + ' b - - 0 1');
+            });
+            </script>
+            <% } %>
           </div>
         </div>
       </div>
