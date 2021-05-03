@@ -7,7 +7,7 @@
     <%- include('./partials/header') -%>
     <main>
       <div class="container-fluid game px-0" itemscope itemtype="http://schema.org/Game">
-        <div class="container <% if (fullUrl == 'https://chessviet.com/set-up') { %>px-3 pb-0 pt-3<% } else { %>p-3<% } %>">
+        <div class="container <% if (board != '') { %>px-3 pb-0 pt-3<% } else { %>p-3<% } %>">
           <audio id="nuoc-co">
             <source src="/public/sound/nuocCo.mp3" type="audio/mpeg">
             <source src="/public/sound/nuocCo.wav" type="audio/wav">
@@ -18,7 +18,7 @@
             <source src="/public/sound/hetTran.wav" type="audio/wav">
             Your browser does not support the audio element.
           </audio>
-          <% if (fullUrl == 'https://chessviet.com/set-up') { %>
+          <% if (board != '') { %>
           <p class="w-100 text-center">
             <a id="capture" class="btn btn-dark btn-lg" href="javascript:void(0);"><i class="fal fa-camera"></i> Capture the board</a>
           </p>

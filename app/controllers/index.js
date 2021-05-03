@@ -13,7 +13,7 @@ router.param("fen", function(req, res, next, fen){
 });
 
 router.get("/", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
     bodyClass: "home",
     level: 3,
@@ -26,7 +26,7 @@ router.get("/", function(req, res){
 });
 
 router.get("/gioi-thieu", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/about", {
     bodyClass: "about",
     fullUrl: fullUrl,
@@ -37,9 +37,9 @@ router.get("/gioi-thieu", function(req, res){
 });
 
 router.get("/moi-choi", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 1,
     levelTxt: "Mới chơi",
     fullUrl: fullUrl,
@@ -50,9 +50,9 @@ router.get("/moi-choi", function(req, res){
 });
 
 router.get("/de", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 2,
     levelTxt: "Dễ",
     fullUrl: fullUrl,
@@ -63,9 +63,9 @@ router.get("/de", function(req, res){
 });
 
 router.get("/binh-thuong", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 3,
     levelTxt: "Bình thường",
     fullUrl: fullUrl,
@@ -76,9 +76,9 @@ router.get("/binh-thuong", function(req, res){
 });
 
 router.get("/kho", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 4,
     levelTxt: "Khó",
     fullUrl: fullUrl,
@@ -89,9 +89,9 @@ router.get("/kho", function(req, res){
 });
 
 router.get("/cao-thu", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 5,
     levelTxt: "Cao thủ",
     fullUrl: fullUrl,
@@ -102,9 +102,9 @@ router.get("/cao-thu", function(req, res){
 });
 
 router.get("/choi-voi-nhau", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/human", {
-    bodyClass: "game",
+    bodyClass: "home",
     fullUrl: fullUrl,
     title: "Chơi với nhau",
     board: "",
@@ -113,7 +113,7 @@ router.get("/choi-voi-nhau", function(req, res){
 });
 
 router.get("/xep-co", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/setup", {
     bodyClass: "setup",
     fullUrl: fullUrl,
@@ -124,7 +124,7 @@ router.get("/xep-co", function(req, res){
 });
 
 router.get("/xep-co/:board([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/setup", {
     bodyClass: "setup",
     fullUrl: fullUrl,
@@ -136,7 +136,7 @@ router.get("/xep-co/:board([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
 });
 
 router.get("/en", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
     bodyClass: "home",
     level: 3,
@@ -149,7 +149,7 @@ router.get("/en", function(req, res){
 });
 
 router.get("/about", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/about", {
     bodyClass: "about",
     fullUrl: fullUrl,
@@ -160,9 +160,9 @@ router.get("/about", function(req, res){
 });
 
 router.get("/newbie", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 1,
     levelTxt: "Newbie",
     fullUrl: fullUrl,
@@ -173,9 +173,9 @@ router.get("/newbie", function(req, res){
 });
 
 router.get("/easy", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 2,
     levelTxt: "Easy",
     fullUrl: fullUrl,
@@ -186,9 +186,9 @@ router.get("/easy", function(req, res){
 });
 
 router.get("/normal", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 3,
     levelTxt: "Normal",
     fullUrl: fullUrl,
@@ -199,9 +199,9 @@ router.get("/normal", function(req, res){
 });
 
 router.get("/hard", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 4,
     levelTxt: "Hard",
     fullUrl: fullUrl,
@@ -212,9 +212,9 @@ router.get("/hard", function(req, res){
 });
 
 router.get("/insane", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/ai", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 5,
     levelTxt: "Insane",
     fullUrl: fullUrl,
@@ -225,9 +225,9 @@ router.get("/insane", function(req, res){
 });
 
 router.get("/play-with-friend", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/human", {
-    bodyClass: "game",
+    bodyClass: "home",
     fullUrl: fullUrl,
     title: "Play with friend",
     board: "",
@@ -236,7 +236,7 @@ router.get("/play-with-friend", function(req, res){
 });
 
 router.get("/set-up", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/setup", {
     bodyClass: "setup",
     fullUrl: fullUrl,
@@ -247,7 +247,7 @@ router.get("/set-up", function(req, res){
 });
 
 router.get("/set-up/:board([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/setup", {
     bodyClass: "setup",
     fullUrl: fullUrl,
@@ -258,9 +258,9 @@ router.get("/set-up/:board([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
 });
 
 router.get("/ban-co/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/board", {
-    bodyClass: "game",
+    bodyClass: "home",
     fullUrl: fullUrl,
     title: "Bàn cờ",
     board: "",
@@ -270,9 +270,9 @@ router.get("/ban-co/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
 });
 
 router.get("/ban-co-moi-choi/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 1,
     levelTxt: "Mới chơi",
     fullUrl: fullUrl,
@@ -284,9 +284,9 @@ router.get("/ban-co-moi-choi/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req,
 });
 
 router.get("/ban-co-de/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 2,
     levelTxt: "Dễ",
     fullUrl: fullUrl,
@@ -298,9 +298,9 @@ router.get("/ban-co-de/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
 });
 
 router.get("/ban-co-binh-thuong/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 3,
     levelTxt: "Bình thường",
     fullUrl: fullUrl,
@@ -312,9 +312,9 @@ router.get("/ban-co-binh-thuong/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(r
 });
 
 router.get("/ban-co-kho/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 4,
     levelTxt: "Khó",
     fullUrl: fullUrl,
@@ -326,9 +326,9 @@ router.get("/ban-co-kho/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res)
 });
 
 router.get("/ban-co-cao-thu/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 5,
     levelTxt: "Cao thủ",
     fullUrl: fullUrl,
@@ -340,9 +340,9 @@ router.get("/ban-co-cao-thu/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, 
 });
 
 router.get("/board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/board", {
-    bodyClass: "game",
+    bodyClass: "home",
     fullUrl: fullUrl,
     title: "Board",
     board: "",
@@ -352,9 +352,9 @@ router.get("/board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
 });
 
 router.get("/newbie-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 1,
     levelTxt: "Newbie",
     fullUrl: fullUrl,
@@ -366,9 +366,9 @@ router.get("/newbie-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, re
 });
 
 router.get("/easy-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 2,
     levelTxt: "Easy",
     fullUrl: fullUrl,
@@ -380,9 +380,9 @@ router.get("/easy-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res)
 });
 
 router.get("/normal-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 3,
     levelTxt: "Normal",
     fullUrl: fullUrl,
@@ -394,9 +394,9 @@ router.get("/normal-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, re
 });
 
 router.get("/hard-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 4,
     levelTxt: "Hard",
     fullUrl: fullUrl,
@@ -408,9 +408,9 @@ router.get("/hard-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res)
 });
 
 router.get("/insane-board/:fen([a-zA-Z0-9\-\/\s|%20|&nbsp;]+)", function(req, res){
-  fullUrl = "https://chessviet.com" + req.originalUrl;
+  fullUrl = "https://chessviet.com" + req.path;
   res.render("en/pages/boardAi", {
-    bodyClass: "game",
+    bodyClass: "home",
     level: 5,
     levelTxt: "Insane",
     fullUrl: fullUrl,
