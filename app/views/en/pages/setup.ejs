@@ -68,12 +68,12 @@ $("#capture").on('click', function() {
       var context = canvas.getContext('2d');
 
       // Draw the Watermark
-      context.font = '25px monospace';
+      context.font = '42px monospace';
       context.globalCompositeOperation = 'lighter';
-      context.fillStyle = '#424242';
+      context.fillStyle = '#848484';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      context.fillText('CHESSROOM.TOP', canvas.width / 2, canvas.height / 2);
+      context.fillText('CHESSVIET.COM', canvas.width / 2, canvas.height / 2);
 
       canvas.toBlob(function(blob) {
         saveAs(blob, "board-<%= Date.now() %>.png"); 
